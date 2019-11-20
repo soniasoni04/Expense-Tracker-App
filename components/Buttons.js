@@ -53,6 +53,19 @@ export const FetchSelectedButton = ({ fetchSelected }) => (
   </View>
 )
 
+export const GoBackdButton = ({ goBackToMain }) => (
+  <View style={styles.buttonContainer}>
+    <TouchableHighlight
+      underlayColor='#efefef'
+      style={styles.button2}
+      onPress={goBackToMain}>
+      <Text style={styles.text}>
+        Go Back To Main Screen
+        </Text>
+    </TouchableHighlight>
+  </View>
+)
+
 const styles = StyleSheet.create({
 
   container: {
