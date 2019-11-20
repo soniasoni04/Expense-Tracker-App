@@ -1,4 +1,4 @@
-import { GET_EXPENSE, GET_FULL_EXPENSE_DETAILS } from '../components/actions/index'
+import { GET_EXPENSE, GET_FULL_EXPENSE_DETAILS,GET_SELECTED_EXPENSE_DETAILS } from '../components/actions/index'
 export default function (state = [], action = {}) {
     switch (action.type) {
         
@@ -9,6 +9,9 @@ export default function (state = [], action = {}) {
         case GET_FULL_EXPENSE_DETAILS:
                 console.log('GET_FULL_EXPENSE_DETAILS details of user / action.payload : ', action.payload)
                 return action.payload
+        case GET_SELECTED_EXPENSE_DETAILS:
+            console.log('GET_SELECTED_EXPENSE_DETAILS details of user / action.payload : ', action.payload)
+            return action.payload
         default:
             return state
     }
