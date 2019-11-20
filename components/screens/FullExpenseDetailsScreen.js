@@ -1,12 +1,16 @@
 import React, { Component } from 'react'
 import {StyleSheet, View, Text } from 'react-native'
 import { connect } from "react-redux";
+import {GoBackdButton } from '../Buttons'
  
 class FullExpenseDetailsScreen extends Component {
 
-  componentDidMount(){
-    console.log("hello")
-  }
+    goBackToMain=()=>{
+
+        setTimeout(()=>{
+            this.props.navigation.navigate('MainScreen')
+            }, 1000);
+    }
 
   
   render() {
@@ -33,7 +37,9 @@ class FullExpenseDetailsScreen extends Component {
             Total expense : {amountArray.reduce((total, item) => {
                 return (total + item)
             })}
-        </Text>  
+        </Text>
+        <Text></Text>  
+        <GoBackdButton goBackToMain={this.goBackToMain} />
       </View>
     )
   }
