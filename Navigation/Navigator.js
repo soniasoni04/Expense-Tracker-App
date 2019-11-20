@@ -6,13 +6,17 @@ import LoginScreen from '../components/screens/Login'
 import SplashScreen from '../components/screens/SplashScreen'
 import MainScreen from '../components/screens/MainScreen'
 import FullExpenseDetailsScreen from '../components/screens/FullExpenseDetailsScreen'
+import SelectedExpenseScreen from '../components/screens/SelectedExpenseScreen'
+import ShowSelectedExpenseDetailsScreen from '../components/screens/ShowSelectedExpenseDetailsScreen'
  
 const RootStack = createStackNavigator({
   SignupScreen: { screen: SignupScreen },
   LoginScreen : {screen : LoginScreen},
   SplashScreen: { screen: SplashScreen },
   MainScreen: { screen: MainScreen },
-  FullExpenseDetailsScreen : {screen : FullExpenseDetailsScreen}
+  FullExpenseDetailsScreen : {screen : FullExpenseDetailsScreen},
+  SelectedExpenseScreen :{screen : SelectedExpenseScreen},
+  ShowSelectedExpenseDetailsScreen :{screen : ShowSelectedExpenseDetailsScreen}
   
 },{
   initialRouteName: 'SignupScreen',

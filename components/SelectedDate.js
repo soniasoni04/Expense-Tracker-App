@@ -3,7 +3,7 @@ import { View, TextInput, StyleSheet } from 'react-native'
 import DatePicker from 'react-native-datepicker';
 
 
-const SelectedDate = ({ chosenDate, onDateChange }) => (
+export const SelectedDate = ({ chosenDate, onDateChange }) => (
   <View style={styles.container}>
     <DatePicker
       date={chosenDate}
@@ -13,8 +13,33 @@ const SelectedDate = ({ chosenDate, onDateChange }) => (
       placeholder="Select date"
     />
   </View>
-
 )
+
+export const StartDate = ({ startDate, onDateChangeStart }) => (
+  <View style={styles.container}>
+    <DatePicker
+      date={startDate}
+      style={styles.input}
+      onDateChange={onDateChangeStart}
+      format="DD-MM-YYYY"
+      placeholder="Select start date"
+    />
+  </View>
+)
+
+export const EndDate = ({ endDate, onDateChangeEnd }) => (
+  <View style={styles.container}>
+    <DatePicker
+      date={endDate}
+      style={styles.input}
+      onDateChange={onDateChangeEnd}
+      format="DD-MM-YYYY"
+      placeholder="Select end date"
+    />
+  </View>
+)
+
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -38,4 +63,3 @@ const styles = StyleSheet.create({
   }
 })
 
-export default SelectedDate;

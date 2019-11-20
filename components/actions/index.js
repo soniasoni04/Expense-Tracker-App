@@ -174,4 +174,41 @@ export const getFullExpenseDetails=()=>(dispatch,getState)=> {
       console.error(error);
     });
 }
+
+//getSelectedExpenseDetails 
+
+export const GET_SELECTED_EXPENSE_DETAILS= 'GET_SELECTED_EXPENSE_DETAILS'
+
+function selectedExpenseDetails(payload){
+  return{
+    type: GET_SELECTED_EXPENSE_DETAILS,
+    payload: payload
+  }
+}
+
+export const getSelectedExpenseDetails=(data)=>(dispatch)=> {
   
+  console.log("u are inside the fetch request GET_SELECTED_EXPENSE_DETAILS")
+
+  fetch('http://localhost:4000/users/expense/date', {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      startDate: data.startDate,
+      endDate: data.endDate
+    }),
+  })
+  .then(res=> res.json())
+  .then(resJSON => {
+    console.log("response after posting ur expense date range", resJSON)
+    const action = selectedExpenseDetails(resJSON) 
+    dispatch(action)
+  })
+  .catch((error) => {
+    console.error(error);
+  });
+  }
+//

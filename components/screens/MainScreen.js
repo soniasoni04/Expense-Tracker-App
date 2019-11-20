@@ -4,17 +4,17 @@ import { View, ScrollView, StyleSheet } from 'react-native'
 import Heading from '../Heading'
 import { CancelButton, DoneButton, FetchAllButton, FetchSelectedButton } from '../Buttons'
 import Amount from '../Amount'
-import SelectedDate from '../SelectedDate'
+import {SelectedDate} from '../SelectedDate'
 import Comment from '../Comments'
 import CategoryList from '../CategoryList'
-import { expenseData, getFullExpenseDetails } from "../actions/index";
+import { expenseData, getFullExpenseDetails, getSelectedExpenseDetails } from "../actions/index";
 
 class MainScreen extends Component {
     constructor() {
         super()
         this.state = {
             amount: '',
-            chosenDate: null,
+            chosenDate: '',
             comments: '',
             category: '',
             type: '',
@@ -28,7 +28,7 @@ class MainScreen extends Component {
         console.log("do reset everything!!")
         this.setState({
             amount: '',
-            chosenDate: null,
+            chosenDate: '',
             comments: '',
             category: '',
             type: '',
@@ -62,6 +62,13 @@ class MainScreen extends Component {
 
     fetchSelected=()=>{
         console.log("fetch selected data details ")
+        //this.props.getSelectedExpenseDetails();
+        
+        console.log("gong to another screen")
+
+        setTimeout(()=>{
+            this.props.navigation.navigate('SelectedExpenseScreen')
+            }, 2000);
     }
 
     fetchAll=()=>{
@@ -100,8 +107,6 @@ class MainScreen extends Component {
                     <FetchAllButton fetchAll={this.fetchAll}/>
 
                 </ScrollView>
-                    
-
             </View>
         )
     }
@@ -126,4 +131,4 @@ function mapStateToProps(state) {
 }
 
 
-export default connect(mapStateToProps, { expenseData, getFullExpenseDetails })(MainScreen);
+export default connect(mapStateToProps, { expenseData, getFullExpenseDetails, getSelectedExpenseDetails })(MainScreen);

@@ -53,6 +53,20 @@ export const FetchSelectedButton = ({ fetchSelected }) => (
   </View>
 )
 
+export const SubmitButton = ({ getSelectedExpense }) => (
+  <View style={styles.buttonContainer}>
+    <TouchableHighlight
+      underlayColor='#efefef'
+      style={styles.button1}
+      onPress={getSelectedExpense}>
+      <Text style={styles.text}>
+        Submit
+        </Text>
+    </TouchableHighlight>
+  </View>
+)
+
+
 export const GoBackdButton = ({ goBackToMain }) => (
   <View style={styles.buttonContainer}>
     <TouchableHighlight
