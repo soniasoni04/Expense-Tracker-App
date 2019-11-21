@@ -34,7 +34,7 @@ export const FetchAllButton = ({ fetchAll }) => (
       style={styles.button2}
       onPress={fetchAll}>
       <Text style={styles.text}>
-      Full Expense Statement
+        Full Expense Statement
         </Text>
     </TouchableHighlight>
   </View>

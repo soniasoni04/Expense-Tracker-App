@@ -12,8 +12,6 @@ class CaterogyList extends Component {
 
     render(){
 
-        console.log(" new list ")
-
         let data = [
             {
             value: 'Rent',
@@ -59,8 +57,8 @@ class CaterogyList extends Component {
           }];
 
     categoryUpdate=(category)=>{
-        console.log("hello")
-        console.log("event value")
+        //console.log("hello")
+        //console.log("event value")
 
         this.setState({category})
         }

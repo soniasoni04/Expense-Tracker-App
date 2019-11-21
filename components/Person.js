@@ -1,7 +1,7 @@
 import t from 'tcomb-form-native';
 
 const Person = t.struct({
-  //name: t.String,
+  
   email: t.String,
   password: t.String,
 });
@@ -9,11 +9,11 @@ const Person = t.struct({
 export const formOptions = {
     fields: {
       email: {
-        keyboardType: 'email-address', // change keyboard layout to email input
-        autoCapitalize: 'none', // start email addresses with lower-case
+        keyboardType: 'email-address', 
+        autoCapitalize: 'none', 
       },
       password: {
-        secureTextEntry: true,  // mask password input
+        secureTextEntry: true, 
       }
     }
   }

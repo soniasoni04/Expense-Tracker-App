@@ -4,24 +4,21 @@ import t from 'tcomb-form-native';
 import Person, { formOptions } from '../Person';
 import styles from '../SignUp.styles';
 import { login } from "../actions/index";
-import {users} from "../actions/index";
+import { users } from "../actions/index";
 import { connect } from "react-redux";
 
-
- class Login extends Component {
+class Login extends Component {
   constructor(props) {
     super(props);
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-
     this.state = { User: null };
   }
 
   componentDidMount() {
     // focus on the "email" field
     this.refs.form.getComponent('email').refs.input.focus();
-    //this.props.users();
   }
 
   clearForm() {
@@ -30,8 +27,6 @@ import { connect } from "react-redux";
 
   onChange(User) {
     this.setState({ User });
-    //console.log("user details : ", this.state)
-
   }
 
   onSubmit() {
@@ -40,16 +35,16 @@ import { connect } from "react-redux";
 
     if (!User) return;
 
-    console.log("User with state", this.state);
-    console.log("only User with email : ", this.state.User.email);
-    console.log("only User with psaaword: ", this.state.User.password);
+    // console.log("User with state", this.state);
+    // console.log("only User with email : ", this.state.User.email);
+    // console.log("only User with psaaword: ", this.state.User.password);
 
     this.props.login(this.state.User);
     this.clearForm();
-    
-    setTimeout(()=>{
+
+    setTimeout(() => {
       this.props.navigation.navigate('SplashScreen')
-      }, 2000); 
+    }, 2000);
   }
 
 
@@ -58,24 +53,24 @@ import { connect } from "react-redux";
     return (
       <View style={styles.outerContainer}>
         <KeyboardAvoidingView
-            behavior="padding"
-            style={styles.container}> 
-            <View style={styles.container}>
-              <Text style={styles.title}>Login</Text>
-              
-              <Form
-                ref="form"
-                type={Person}
-                options={formOptions} 
-                value={this.state.User}
-                onChange={this.onChange} />
-            
-              <TouchableHighlight
+          behavior="padding"
+          style={styles.container}>
+          <View style={styles.container}>
+            <Text style={styles.title}>Login</Text>
+
+            <Form
+              ref="form"
+              type={Person}
+              options={formOptions}
+              value={this.state.User}
+              onChange={this.onChange} />
+
+            <TouchableHighlight
               style={styles.button}
               onPress={this.onSubmit}
               underlayColor='#99d9f4' >
-                <Text style={styles.buttonText}>Login</Text>
-              </TouchableHighlight>
+              <Text style={styles.buttonText}>Login</Text>
+            </TouchableHighlight>
 
           </View>
         </KeyboardAvoidingView>
@@ -84,13 +79,4 @@ import { connect } from "react-redux";
   }
 }
 
-function mapStateToProps (state) {
-
-  console.log("state value from mapStateToProps : ", state)
-  const login = state.login
-
-  return { message: 'hello' }
-}
-
-
-export default connect(mapStateToProps, { login,users })(Login);
+export default connect(null, { login, users })(Login);
