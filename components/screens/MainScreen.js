@@ -27,7 +27,6 @@ class MainScreen extends Component {
 
 
     getCancel = () => {
-        //console.log("do reset everything!!")
         this.setState({
             amount: '',
             chosenDate: '',
@@ -37,10 +36,7 @@ class MainScreen extends Component {
     }
 
     getDone = () => {
-        //console.log("press done, update the state values")
-        //console.log("updated state date: ", this.state)
         this.props.expenseData(this.state)
-
         this.getCancel();
     }
 
@@ -48,49 +44,39 @@ class MainScreen extends Component {
         this.setState({ amount })
     }
 
-    onDateChange = (date) => {
+    getDateChange = (date) => {
         this.setState({ chosenDate: date })
     }
 
-    inputChange = (comments) => {
+    getComments = (comments) => {
         this.setState({ comments })
     }
 
-    categoryUpdate = (event) => {
-        console.log("event click : ", event.target.value)
+    getChangeCaterogy = (value) => {
+        console.log("selected item : ", value)
         console.log("u are inside category block")
+
+        this.setState({
+            category : value
+          })
     }
 
-    fetchSelected=()=>{
-        //console.log("fetch selected data details ")        
-        //console.log("gong to another screen")
-
+    getFetchSelected=()=>{
         setTimeout(()=>{
             this.props.navigation.navigate('SelectedExpenseScreen')
             }, 2000);
     }
 
-    fetchAll=()=>{
-        //console.log("fetch all details ")
+    getFetchAll=()=>{
         this.props.getFullExpenseDetails();
-
-        //console.log("going to another screen:")
-
         setTimeout(()=>{
             this.props.navigation.navigate('FullExpenseDetailsScreen')
             }, 2000); 
     }
 
-    // onSelect=(text)=>{
-    //     console.log("hello from canada", text)
-    //     this.setState({
-    //         canada : text
-    //     })
-    // }
-
     render() {
         const { amount, chosenDate, comments, category } = this.state
-        //console.log("state value: ", this.state)
+
         return (
             <View style={styles.container}>
                 <ScrollView
@@ -102,16 +88,17 @@ class MainScreen extends Component {
                         inputChange={(string) => this.getAmount(string)} />
                     <SelectedDate
                         chosenDate={chosenDate}
-                        onDateChange={(date) => this.onDateChange(date)} />
-                    <CategoryList />
+                        onDateChange={(date) => this.getDateChange(date)} />
+
+                    <CategoryList category={category} onChangeHandler={(value)=>this.getChangeCaterogy(value)}/>
                     
-                    <Comment inputValue={comments} inputChange={(text) => this.inputChange(text)} />
+                    <Comment inputValue={comments} inputChange={(text) => this.getComments(text)} />
 
                     <DoneButton getDone={this.getDone} />
                     <CancelButton getCancel={this.getCancel} />
 
-                    <FetchSelectedButton fetchSelected={this.fetchSelected}/>
-                    <FetchAllButton fetchAll={this.fetchAll}/>
+                    <FetchSelectedButton fetchSelected={this.getFetchSelected}/>
+                    <FetchAllButton fetchAll={this.getFetchAll}/>
 
                 </ScrollView>
             </View>
