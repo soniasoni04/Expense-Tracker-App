@@ -24,8 +24,7 @@ class FullExpenseDetailsScreen extends Component {
           keyboardShouldPersistTaps='always'
           style={styles.content}>
           <Text style={styles.title}> Expense Details List </Text>
-          <Text style={styles.title}> ---------------------    </Text>
-          <Text> </Text>
+          <Text>  {"\n"} </Text>
           <Text style={styles.containerText}>
 
             {this.props.expense.map((expense, index) => {
