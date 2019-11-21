@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux";
-import { View,Text, ScrollView} from 'react-native'
+import { View, ScrollView} from 'react-native'
 import Heading from '../Heading'
 import { CancelButton, DoneButton, FetchAllButton, FetchSelectedButton } from '../Buttons'
 import Amount from '../Amount'
@@ -53,9 +53,6 @@ class MainScreen extends Component {
     }
 
     getChangeCaterogy = (value) => {
-        console.log("selected item : ", value)
-        console.log("u are inside category block")
-
         this.setState({
             category : value
           })
