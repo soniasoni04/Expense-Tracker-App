@@ -19,7 +19,6 @@ import { connect } from "react-redux";
   }
 
   componentDidMount() {
-    // focus on the "name" field
     this.refs.form.getComponent('email').refs.input.focus();
     this.props.users();
   }
@@ -30,7 +29,6 @@ import { connect } from "react-redux";
 
   onChange(newUser) {
     this.setState({ newUser });
-    //console.log("user details : ", this.state)
 
   }
 
@@ -38,10 +36,6 @@ import { connect } from "react-redux";
     const { form } = this.refs;
     const newUser = form.getValue();
     if (!newUser) return;
-    console.log("newUser with state", this.state);
-    console.log("only newUser with email : ", this.state.newUser.email);
-    console.log("only newUser with psaaword: ", this.state.newUser.password);
-
     this.props.signUp(this.state.newUser);
     this.clearForm();
     
@@ -83,13 +77,4 @@ import { connect } from "react-redux";
   }
 }
 
-function mapStateToProps (state) {
-
-  console.log("state value from mapStateToProps : ", state)
-  
-
-  return { message: 'hello' }
-}
-
-
-export default connect(mapStateToProps, { signUp,users })(SignUp);
+export default connect(null, { signUp,users })(SignUp);
