@@ -1,4 +1,4 @@
-# Expense-Tracker-App
+## Expense-Tracker-App
 Expense Tracker App with React Native
 
 This is my first React-Native App.
